@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Supply Chain Management - Distributor</title>
+  <link rel="stylesheet" href="./distri.css">
+</head>
+<body>
+  <h1>Are You a Distributor?</h1>
+  <p>If you are a distributor, please enter your address and select an option:</p>
+  <form id="distributorForm">
+    <label for="distributorAddress">Address:</label>
+    <input type="text" id="distributorAddress" name="distributorAddress">
+    <label for="distributorContact">Contact:</label>
+    <input type="text" id="distributorContact" name="distributorContact">
+    <label for="distributorOption">Select an option:</label>
+    <select id="distributorOption" name="distributorOption">
+      <option value="manufacturing">Manufacturing Details</option>
+      <option value="tracking">Tracking Details</option>
+    </select>
+    <button type="button" onclick="storeAddress()">Submit</button>
+  </form>
+
+  <div id="formContainer" style="display: none;">
+    <h2>Enter Details</h2>
+    <form id="detailsForm">
+      <label for="productName">Product Name:</label>
+      <input type="text" id="productName" name="productName">
+      <label for="productId">Product ID:</label>
+      <input type="text" id="productId" name="productId">
+      <label for="currentLocation">Current Location:</label>
+      <input type="text" id="currentLocation" name="currentLocation">
+      <button type="button" onclick="submitDetails()">Submit</button>
+    </form>
+  </div>
+
+  <div id="distributorDetails"></div>
+
+  <script>
+    let distributorAddress;
+    let distributorContact;
+    let distributorOption;
+    
+    async function storeAddress() {
+      distributorAddress = document.getElementById("distributorAddress").value;
+      distributorContact = document.getElementById("distributorContact").value;
+      distributorOption = document.getElementById("distributorOption").value;
+      document.getElementById("formContainer").style.display = "block";
+    }
+
+    async function submitDetails() {
+      const detailsForm = document.getElementById("detailsForm");
+      const formData = new FormData(detailsForm);
+      const details = Object.fromEntries(formData.entries());
+
+      // Send details to the backend for processing
+      const actor = await Actor.createActor(canisterId, { agent: agent });
+      const result = await actor.getDistributorInfo(distributorAddress, distributorContact, distributorOption, details);
+      document.getElementById("distributorDetails").innerText = result;
+    }
+
+    document.getElementById("distributorOption").addEventListener("change", function() {
+      const option = document.getElementById("distributorOption").value;
+      const currentLocationField = document.getElementById("currentLocation");
+
+      if (option === "manufacturing") {
+        currentLocationField.style.display = "none";
+      } else if (option === "tracking") {
+        currentLocationField.style.display = "block";
+      }
+    });
+  </script>
+  <footer>
+    <a href="#">About Us</a>
+    <a href="#">Contact Details</a>
+    <a href="#">Support</a>
+    <a>&copy; 2024 Supply Chain Management</a>
+  </footer>
+  
+</body>
+</html>

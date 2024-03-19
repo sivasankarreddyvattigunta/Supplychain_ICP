@@ -1,0 +1,90 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #000;
+    color: #fff; /* White */
+    margin: 0;
+    padding: 0;
+  }
+  
+  h1 {
+    color: #009933; /* Green */
+    text-align: center;
+  }
+  
+  form {
+    max-width: 400px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #333; /* Dark gray */
+    border-radius: 5px;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 5px;
+    color: #00cc66; /* Light green */
+  }
+  
+  input[type="text"],
+  select {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #00cc66; /* Light green */
+    border-radius: 3px;
+    background-color: #444; /* Dark gray */
+    color: #fff; /* White */
+  }
+  
+  button {
+    width: 100%;
+    padding: 10px;
+    background-color: #00cc66; /* Light green */
+    color: #000; /* Black */
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #009933; /* Green */
+  }
+  
+  #details, #distributorForm {
+    margin-top: 20px;
+  }
+  
+  a {
+    color: #00cc66; /* Light green */
+  }
+  
+  a:hover {
+    color: #009933; /* Green */
+  }
+  footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #000; /* Dark gray */
+    color: #fff; /* White */
+    text-align: center;
+    padding: 10px 0;
+  }
+  
+  footer a {
+    display: block;
+    margin-bottom: 5px;
+    color: #009933; /* White */
+    text-decoration: none;
+  }
+  
+  footer a:hover {
+    text-decoration: underline;
+  }
+  #distributorForm label {
+    display: block;
+    margin-bottom: 5px;
+    color: #009933; /* Green */
+    text-align: center; /* Center the text */
+  }
+  

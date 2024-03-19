@@ -1,0 +1,4 @@
+service : {
+  getDetails: (text, text) -> (text) query;
+  getDistributorInfo: (text, text, text) -> (text) query;
+}

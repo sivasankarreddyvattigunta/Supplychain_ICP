@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Supply Chain Management</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <h1>Supply Chain Management</h1>
+  <form id="detailsForm">
+    <label for="option">Select an option:</label>
+    <select id="option" name="option">
+      <option value="manufacturing">Manufacturing Details</option>
+      <option value="tracking">Tracking Details</option>
+    </select>
+    <label for="id">Enter ID:</label>
+    <input type="text" id="id" name="id">
+    <button type="button" onclick="getDetails()">Submit</button>
+  </form>
+  <div id="details"></div>
+
+  <p style="text-align: center;">Are you a distributor? <a href="./distributor.html" onclick="showDistributorForm()">Click here</a> to provide your address and information.</p>
+  
+
+ 
+  <script>
+    async function getDetails() {
+      const option = document.getElementById("option").value;
+      const id = document.getElementById("id").value;
+      const actor = await Actor.createActor(canisterId, { agent: agent });
+      const details = await actor.getDetails(option, id);
+      document.getElementById("details").innerText = details;
+    }
+
+    function showDistributorForm() {
+      document.getElementById("distributorForm").style.display = "block";
+    }
+
+    function submitDistributorInfo() {
+      const address = document.getElementById("distributorAddress").value;
+      const info = document.getElementById("distributorInfo").value;
+      
+    }
+  </script>
+  <footer>
+    <a href="#">About Us</a>
+    <a href="#">Contact Details</a>
+    <a href="#">Support</a>
+    <a>&copy; 2024 Supply Chain Management</a>
+  </footer>
+  
+</body>
+
+</html>
